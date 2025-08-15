@@ -1,0 +1,179 @@
+:root {
+  --obsidian: #0B0F14;
+  --gunmetal: #111827;
+  --starlight: #F8FAFC;
+  --aurora-mint: #00E6A8;
+  --neon-ember: #FF6A3D;
+  --electric-violet: #7C3AED;
+  --font-head: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--obsidian);
+  color: var(--starlight);
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+header, section {
+  padding: 4rem 1rem;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-head);
+  margin-bottom: 1rem;
+}
+
+button, a {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--starlight);
+}
+
+#hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, var(--gunmetal) 0%, var(--obsidian) 70%);
+}
+
+.spark {
+  width: 120px;
+  height: 120px;
+}
+
+.cta-button {
+  background: var(--aurora-mint);
+  color: var(--gunmetal);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  border-radius: 4px;
+  margin-top: 2rem;
+  transition: background 0.3s;
+}
+
+.cta-button:hover,
+.cta-button:focus {
+  background: var(--neon-ember);
+  color: var(--starlight);
+}
+
+#services .hex-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.hex {
+  position: relative;
+  width: 100%;
+  padding-top: 115%;
+  background: var(--gunmetal);
+  clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.hex:hover {
+  transform: scale(1.05);
+}
+
+.hex-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 1rem;
+}
+
+#dashboard {
+  background: var(--gunmetal);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.panel {
+  background: var(--obsidian);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.panic-button {
+  background: var(--neon-ember);
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  width: 100%;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+#portfolio .filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filter-button {
+  border: 1px solid var(--aurora-mint);
+  background: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  color: var(--aurora-mint);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: var(--gunmetal);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+#founder img {
+  max-width: 200px;
+  border-radius: 50%;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+#contact form {
+  display: grid;
+  gap: 1rem;
+  max-width: 500px;
+}
+
+input, select, textarea {
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: none;
+  font-family: var(--font-body);
+}
+
+@media (min-width: 768px) {
+  header, section {
+    padding: 6rem 2rem;
+  }
+}
