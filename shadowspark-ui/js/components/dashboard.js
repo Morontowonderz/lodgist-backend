@@ -1,5 +1,5 @@
 function createPanel(title, content, id) {
-  return `<div class="panel" id="${id}"><h3>${title}</h3><pre>${content}</pre></div>`;
+  return `<div class="panel" id="${id}"><h3>${title}</h3><div role="status" aria-live="polite">${content}</div></div>`;
 }
 
 export function renderDashboard() {
@@ -14,12 +14,14 @@ export function renderDashboard() {
     <button class="panic-button" aria-label="Emergency support">Panic Button</button>
   `;
 
-  section.querySelector('.panic-button').addEventListener('click', () => alert('ShadowSpark support has been notified!'));
+    section.querySelector('.panic-button').addEventListener('click', () => alert('ShadowSpark support has been notified!'));
 
-  // Mock live updates
-  setInterval(()=> {
-    document.getElementById('server-health').querySelector('pre').textContent = 'CPU: ' + Math.round(Math.random()*50+50) + '%\nMemory: ' + Math.round(Math.random()*50+50) + '%';
-    document.getElementById('threat-feed').querySelector('pre').textContent = 'Last scan: ' + new Date().toLocaleTimeString();
-    document.getElementById('network-metrics').querySelector('pre').textContent = 'Latency: ' + Math.round(Math.random()*10+15) + 'ms\nThroughput: 1Gbps';
-  }, 5000);
+    // Mock live updates
+    const updateInterval = setInterval(()=> {
+      document.getElementById('server-health').querySelector('[role="status"]').textContent = 'CPU: ' + Math.round(Math.random()*50+50) + '%\nMemory: ' + Math.round(Math.random()*50+50) + '%';
+      document.getElementById('threat-feed').querySelector('[role="status"]').textContent = 'Last scan: ' + new Date().toLocaleTimeString();
+      document.getElementById('network-metrics').querySelector('[role="status"]').textContent = 'Latency: ' + Math.round(Math.random()*10+15) + 'ms\nThroughput: 1Gbps';
+    }, 5000);
+
+    window.addEventListener('beforeunload', () => clearInterval(updateInterval));
 }

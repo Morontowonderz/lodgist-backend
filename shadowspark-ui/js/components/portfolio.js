@@ -10,7 +10,7 @@ export function renderPortfolio() {
   section.innerHTML = `
     <h2 id="portfolio-heading">Project Portfolio</h2>
     <div class="filters" role="group" aria-label="Portfolio filters">
-      ${['All','Web Dev','AI','Security','Hardware'].map(f=>`<button class="filter-button" data-filter="${f}">${f}</button>`).join('')}
+      ${['All','Web Dev','AI','Security','Hardware'].map((f,i)=>`<button class="filter-button${i===0? ' active':''}" data-filter="${f}" aria-pressed="${i===0}">${f}</button>`).join('')}
     </div>
     <div class="portfolio-grid" role="list"></div>
   `;
@@ -29,6 +29,12 @@ export function renderPortfolio() {
   }
 
   buttons.forEach(btn=>btn.addEventListener('click',()=>{
+    buttons.forEach(b=>{
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed','false');
+    });
+    btn.classList.add('active');
+    btn.setAttribute('aria-pressed','true');
     populate(btn.dataset.filter);
   }));
 
